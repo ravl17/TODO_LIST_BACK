@@ -36,4 +36,11 @@ public class TaskService {
         taskRepository.updateIsDoneProperty(id,is_done);
 
     }
+    public void addTask(Task newTask) {
+        // Save the new task using the save method from CrudRepository
+        taskRepository.save(newTask);
+    }
+    public void updateTask(Long taskId, Task updatedTask) {
+        taskRepository.updateTask(taskId, updatedTask.getName(), updatedTask.getDate(), updatedTask.getIs_done(), updatedTask.getUser_id());
+    }
 }

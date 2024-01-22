@@ -41,4 +41,14 @@ public class TaskController {
     public void setIs_Done(@RequestParam String taskId,@RequestParam boolean is_done){
         taskService.updateIsDoneById(Long.valueOf(taskId),is_done);
     }
+    @PostMapping("/add")
+    public ResponseEntity<String> addTask(@RequestBody Task newTask) {
+        taskService.addTask(newTask);
+        return ResponseEntity.ok("Task added successfully");
+    }
+    @PutMapping("/update/{taskId}")
+    public ResponseEntity<String> updateTask(@PathVariable Long taskId, @RequestBody Task updatedTask) {
+        taskService.updateTask(taskId, updatedTask);
+        return ResponseEntity.ok("Task updated successfully");
+    }
 }
